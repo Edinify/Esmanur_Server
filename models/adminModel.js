@@ -22,6 +22,9 @@ const adminSchema = new Schema(
       enum: ["admin", "super-admin"],
       required: true,
     },
+    currentFilial: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
     otp: Number,
   },
   { timestamps: true }

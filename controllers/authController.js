@@ -7,33 +7,19 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import {
-  createNotificationForBirthdayAtCreateAndUpdateStudent,
-  createNotificationForLessonsCount,
-  createNotificationForOneStudentLessonsCount,
-} from "./notificationController.js";
-import { createSalaryWhenCreateTeacher } from "./salaryController.js";
 import logger from "../config/logger.js";
 
 dotenv.config();
 
 // Register super admin
 export const registerSuperAdmin = async (req, res) => {
-  const { email, role } = req.body;
+  const { role } = req.body;
 
   try {
-    const regexEmail = new RegExp(email, "i");
-
-    const existingStudent = await Student.findOne({ email: regexEmail });
-    const existingTeacher = await Teacher.findOne({ email: regexEmail });
     const existingAdmin = await Admin.findOne({ role: "super-admin" });
 
     if (existingAdmin) {
       return res.status(409).json({ message: "Super Admin already exists" });
-    }
-
-    if (existingStudent || existingTeacher) {
-      return res.status(409).json({ key: "email-already-exist" });
     }
 
     if (role !== "super-admin") {
@@ -61,11 +47,9 @@ export const registerAdmin = async (req, res) => {
   try {
     const regexEmail = new RegExp(email, "i");
 
-    const existingStudent = await Student.findOne({ email: regexEmail });
-    const existingTeacher = await Teacher.findOne({ email: regexEmail });
     const existingAdmin = await Admin.findOne({ email: regexEmail });
 
-    if (existingStudent || existingTeacher || existingAdmin) {
+    if (existingAdmin) {
       return res.status(409).json({ key: "email-already-exist" });
     }
 
@@ -97,27 +81,13 @@ export const registerAdmin = async (req, res) => {
 
 // Register student
 export const registerStudent = async (req, res) => {
-  const { email, courses } = req.body;
+  const { courses } = req.body;
 
   try {
-    const regexEmail = new RegExp(email, "i");
-
-    const existingAdmin = await Admin.findOne({ email: regexEmail });
-    const existingStudent = await Student.findOne({ email: regexEmail });
-    const existingTeacher = await Teacher.findOne({ email: regexEmail });
-
-    if (existingAdmin || existingStudent || existingTeacher) {
-      return res.status(409).json({ key: "email-already-exist" });
-    }
-
     const coursesIds = courses.map((item) => item.course);
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    const student = new Student({
-      ...req.body,
-      password: hashedPassword,
-    });
+    const student = new Student(req.body);
+
     await student.populate("courses.course");
     await student.save();
 
@@ -126,13 +96,7 @@ export const registerStudent = async (req, res) => {
       { $addToSet: { students: student._id } }
     );
 
-    if (student.courses.find((item) => item.lessonAmount < 1)) {
-      createNotificationForOneStudentLessonsCount(student);
-    }
-
-    createNotificationForBirthdayAtCreateAndUpdateStudent(student);
-
-    const studentsCount = await Student.countDocuments({ deleted: false });
+    const studentsCount = await Student.countDocuments();
     const lastPage = Math.ceil(studentsCount / 10);
 
     res.status(201).json({ student, lastPage });
@@ -161,44 +125,19 @@ export const registerStudent = async (req, res) => {
 
 // Register teacher
 export const registerTeacher = async (req, res) => {
-  const { email } = req.body;
-
+  const { course } = req.body;
   try {
-    const regexEmail = new RegExp(email, "i");
-
-    const existingAdmin = await Admin.findOne({ email: regexEmail });
-    const existingStudent = await Student.findOne({ email: regexEmail });
-    const existingTeacher = await Teacher.findOne({ email: regexEmail });
-
-    if (existingAdmin || existingStudent || existingTeacher) {
-      return res.status(409).json({ key: "email-already-exist" });
-    }
-
-    const coursesId = req.body.courses;
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    const teacher = new Teacher({ ...req.body, password: hashedPassword });
-    await teacher.populate("courses");
+    const teacher = new Teacher(req.body);
     await teacher.save();
 
-    const newSalary = createSalaryWhenCreateTeacher(teacher);
+    await Course.findByIdAndUpdate(course, {
+      $addToSet: { teachers: teacher._id },
+    });
 
-    if (!newSalary) {
-      Teacher.findByIdAndDelete(teacher._id);
-
-      return res.status(400).json({ key: "create-error-occurred" });
-    }
-
-    await Course.updateMany(
-      { _id: { $in: coursesId } },
-      { $addToSet: { teachers: teacher._id } }
-    );
-
-    const teachersCount = await Teacher.countDocuments({ deleted: false });
+    const teachersCount = await Teacher.countDocuments();
     const lastPage = Math.ceil(teachersCount / 10);
 
-    res.status(201).json({ teacher: { ...teacher, password: "" }, lastPage });
+    res.status(201).json({ teacher, lastPage });
   } catch (err) {
     logger.error({
       method: "CREATE",
@@ -229,27 +168,22 @@ export const login = async (req, res) => {
     const regexEmail = new RegExp(email, "i");
 
     const admin = await Admin.findOne({ email: regexEmail });
-    const student = await Student.findOne({ email: regexEmail });
-    const teacher = await Teacher.findOne({ email: regexEmail });
 
-    const user = admin || student || teacher;
-
-    console.log(user);
-    if (!user) {
+    if (!admin) {
       return res.status(404).json({ key: "user-not-found" });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
 
     if (!isPasswordValid) {
       return res.status(404).json({ key: "invalid-password" });
     }
 
     // refresh and accesstoken callback for creating
-    const AccessToken = createAccessToken(user);
-    const RefreshToken = createRefreshToken(user);
+    const AccessToken = createAccessToken(admin);
+    const RefreshToken = createRefreshToken(admin);
 
-    saveTokensToDatabase(user._id, RefreshToken, AccessToken);
+    saveTokensToDatabase(admin._id, RefreshToken, AccessToken);
     // send refresh token to cookies
     res.cookie("refreshtoken", RefreshToken, {
       httpOnly: true,
@@ -286,11 +220,11 @@ export const sendCodeToEmail = async (req, res) => {
   const { email } = req.body;
 
   try {
-    const admin = await Admin.findOne({ email });
-    const student = await Student.findOne({ email });
-    const teacher = await Teacher.findOne({ email });
+    const regexEmail = new RegExp(email, "i");
 
-    const user = admin || student || teacher;
+    const admin = await Admin.findOne({ email: regexEmail });
+
+    const user = admin;
 
     if (!user) {
       return res.status(404).json({ key: "user-not-found" });
@@ -327,22 +261,10 @@ export const sendCodeToEmail = async (req, res) => {
       }
     });
 
-    if (user.role === "admin" || user.role === "super-admin") {
-      await Admin.findByIdAndUpdate(user._id, { otp: randomCode });
-    } else if (user.role === "teacher") {
-      await Teacher.findByIdAndUpdate(user._id, { otp: randomCode });
-    } else {
-      await Student.findByIdAndUpdate(user._id, { otp: randomCode });
-    }
+    await Admin.findByIdAndUpdate(user._id, { otp: randomCode });
 
     setTimeout(async () => {
-      if (user.role === "admin" || user.role === "super-admin") {
-        await Admin.findByIdAndUpdate(user._id, { otp: 0 });
-      } else if (user.role === "teacher") {
-        await Teacher.findByIdAndUpdate(user._id, { otp: 0 });
-      } else {
-        await Student.findByIdAndUpdate(user._id, { otp: 0 });
-      }
+      await Admin.findByIdAndUpdate(user._id, { otp: 0 });
     }, 120000);
   } catch (err) {
     logger.error({
@@ -363,10 +285,8 @@ export const checkOtpCode = async (req, res) => {
 
   try {
     const admin = await Admin.findOne({ otp });
-    const student = await Student.findOne({ otp });
-    const teacher = await Teacher.findOne({ otp });
 
-    const user = admin || student || teacher;
+    const user = admin;
 
     if (!user) {
       return res.status(404).json({ message: "invalid-otp" });
@@ -374,13 +294,7 @@ export const checkOtpCode = async (req, res) => {
 
     const userId = user._id;
 
-    if (user.role === "admin" || user.role === "super-admin") {
-      await Admin.findByIdAndUpdate(userId, { otp: 0 });
-    } else if (user.role === "teacher") {
-      await Teacher.findByIdAndUpdate(userId, { otp: 0 });
-    } else {
-      await Student.findByIdAndUpdate(userId, { otp: 0 });
-    }
+    await Admin.findByIdAndUpdate(userId, { otp: 0 });
 
     res.status(200).json({ userId });
   } catch (err) {
@@ -403,10 +317,8 @@ export const changeForgottenPassword = async (req, res) => {
 
   try {
     const admin = await Admin.findById(userId);
-    const student = await Student.findById(userId);
-    const teacher = await Teacher.findById(userId);
 
-    const user = admin || student || teacher;
+    const user = admin;
 
     if (!user) {
       return res.status(404).json({ key: "user-not-found" });
@@ -417,13 +329,7 @@ export const changeForgottenPassword = async (req, res) => {
 
     user.password = hashedPassword;
 
-    if (user.role === "admin" || user.role === "super-admin") {
-      await Admin.findByIdAndUpdate(user._id, { password: hashedPassword });
-    } else if (user.role === "teacher") {
-      await Teacher.findByIdAndUpdate(user._id, { password: hashedPassword });
-    } else {
-      await Student.findByIdAndUpdate(user._id, { password: hashedPassword });
-    }
+    await Admin.findByIdAndUpdate(user._id, { password: hashedPassword });
 
     res.status(200).json({ key: "change-password" });
   } catch (err) {
@@ -544,41 +450,4 @@ const saveTokensToDatabase = async (userId, refreshToken, accessToken) => {
 
 const revokeTokenFromDatabase = async (refreshToken) => {
   await Token.deleteOne({ refreshToken });
-};
-
-// Get user
-export const getUser = async (req, res) => {
-  const { id, role } = req.user;
-
-  try {
-    let user;
-    if (role === "admin" || role === "super-admin") {
-      user = await Admin.findById(id);
-    } else if (role === "teacher") {
-      user = await Teacher.findById(id);
-    } else if (role === "student") {
-      user = await Student.findById(id).populate("courses.course");
-    }
-
-    if (!user) {
-      return res.status(404).json({ message: "not found user" });
-    }
-
-    const userObj = user.toObject();
-
-    delete userObj.password;
-
-    res.status(200).json(userObj);
-  } catch (err) {
-    logger.error({
-      method: "GET",
-      status: 500,
-      message: err.message,
-      for: "GET USER",
-      user: req.user,
-      functionName: getUser.name,
-    });
-
-    res.status(500).json({ message: { error: err.message } });
-  }
 };

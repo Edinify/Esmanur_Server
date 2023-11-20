@@ -4,10 +4,6 @@ const Schema = mongoose.Schema;
 
 const incomeSchema = new Schema(
   {
-    category: {
-      type: String,
-      required: true,
-    },
     appointment: {
       type: String,
       required: true,
@@ -28,13 +24,6 @@ const incomeSchema = new Schema(
     },
     unitPrice: {
       type: Number,
-    },
-    imx: {
-      type: Number,
-    },
-    paymentMethod: {
-      type: String,
-      required: true,
     },
     date: {
       type: Date,

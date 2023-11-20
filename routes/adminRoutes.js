@@ -16,7 +16,7 @@ import {
 const router = express.Router();
 
 router.get("/", authMiddleware, checkSuperAdmin, getAdmins);
-router.get("/:id", authMiddleware, checkSuperAdmin, getAdmin);
+router.get("/:id", authMiddleware, getAdmin);
 router.patch("/:id", authMiddleware, checkSuperAdmin, updateAdmin);
 router.patch(
   "/me/password",

@@ -8,7 +8,7 @@ import logger from "../config/logger.js";
 export const getAdmin = async (req, res) => {
   const { id } = req.user;
   try {
-    const admin = await Admin.findById(id);
+    const admin = await Admin.findById(id).select("-password");
 
     if (!admin) {
       return res.status(404).json({ message: "admin not found" });
@@ -32,7 +32,7 @@ export const getAdmin = async (req, res) => {
 // Get admins
 export const getAdmins = async (req, res) => {
   try {
-    const admins = await Admin.find({ role: "admin" });
+    const admins = await Admin.find({ role: "admin" }).select("-password");
 
     res.status(200).json(admins);
   } catch (err) {
@@ -56,8 +56,11 @@ export const updateAdmin = async (req, res) => {
   const updatedData = req.body;
 
   try {
-    const existingAdmin = await Admin.findOne({ email });
+    const regexEmail = email ? new RegExp(updatedData.email, "i") : null;
 
+    const existingAdmin = await Admin.findOne({ email: regexEmail });
+
+    console.log(existingAdmin);
     if (existingAdmin && existingAdmin._id != id) {
       return res.status(409).json({ key: "email-already-exist" });
     }
@@ -73,7 +76,7 @@ export const updateAdmin = async (req, res) => {
     const newAdmin = await Admin.findByIdAndUpdate(id, updatedData, {
       new: true,
       runValidators: true,
-    });
+    }).select("-password");
 
     res.status(200).json(newAdmin);
   } catch (err) {
@@ -109,7 +112,7 @@ export const deleteAdmin = async (req, res) => {
       return res.status(404).json({ key: "admin-not-found" });
     }
 
-    res.status(200).json(deleteAdmin);
+    res.status(200).json(deletedAdmin);
   } catch (err) {
     logger.error({
       method: "DELETE",
