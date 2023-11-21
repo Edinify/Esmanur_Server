@@ -10,7 +10,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", authMiddleware, checkSuperAdmin, getBranches);
+router.get("/", authMiddleware, getBranches);
 router.post("/", authMiddleware, checkSuperAdmin, createBranch);
 router.patch("/:id", authMiddleware, checkSuperAdmin, updateBranch);
 router.delete("/:id", authMiddleware, checkSuperAdmin, deleteBranch);
