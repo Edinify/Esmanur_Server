@@ -21,6 +21,7 @@ import financeRoutes from "./routes/financeRoutes.js";
 import fineRoutes from "./routes/fineRoutes.js";
 import feedbackRoutes from "./routes/feedbackRoutes.js";
 import branchRoutes from "./routes/branchRoutes.js";
+import foodRoutes from "./routes/foodRoutes.js";
 
 dotenv.config();
 
@@ -51,6 +52,7 @@ app.use("/api/notification", notificationRoutes);
 app.use("/api/salary", salaryRoutes);
 app.use("/api/bonus", bonusRoutes);
 app.use("/api/fine", fineRoutes);
+app.use("/api/food", foodRoutes);
 app.use("/api/user/profile", profileRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/demo", demoSmtpRoutes);
