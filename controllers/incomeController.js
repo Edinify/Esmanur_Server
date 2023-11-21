@@ -53,6 +53,7 @@ export const getIncomesForPagination = async (req, res) => {
 
 // Create income
 export const createIncome = async (req, res) => {
+  
   try {
     const newIncome = new Income(req.body);
     await newIncome.save();
