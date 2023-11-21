@@ -22,7 +22,7 @@ const adminSchema = new Schema(
       enum: ["admin", "super-admin"],
       required: true,
     },
-    currentFilial: {
+    branch: {
       type: mongoose.Schema.Types.ObjectId,
     },
     otp: Number,

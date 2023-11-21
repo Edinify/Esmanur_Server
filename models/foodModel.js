@@ -24,6 +24,10 @@ const foodSchema = new Schema(
       type: Date,
       required: true,
     },
+    branch: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
   },
   { timestamps: true }
 );
