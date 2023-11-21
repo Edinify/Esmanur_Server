@@ -1,5 +1,6 @@
 import { calcDate } from "../calculate/calculateDate.js";
 import logger from "../config/logger.js";
+import { Admin } from "../models/adminModel.js";
 import { Income } from "../models/incomeModel.js";
 
 // Get incomes for pagination
@@ -7,10 +8,12 @@ export const getIncomesForPagination = async (req, res) => {
   const { monthCount, startDate, endDate } = req.query;
   const page = parseInt(req.query.page) || 1;
   const limit = 10;
+  const { id } = req.user;
 
   const targetDate = calcDate(monthCount, startDate, endDate);
 
   try {
+    const currentUser = await Admin.findById(id);
     let totalPages;
     let incomes;
 
@@ -19,6 +22,7 @@ export const getIncomesForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
     totalPages = Math.ceil(incomesCount / limit);
@@ -30,11 +34,10 @@ export const getIncomesForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     })
       .skip((page - 1) * limit)
       .limit(limit);
-
-    console.log(incomes);
 
     res.status(200).json({ incomes, totalPages });
   } catch (err) {
@@ -53,12 +56,18 @@ export const getIncomesForPagination = async (req, res) => {
 
 // Create income
 export const createIncome = async (req, res) => {
-  
+  const { id } = req.user;
+
   try {
+    const currentUser = await Admin.findById(id);
+
     const newIncome = new Income(req.body);
     await newIncome.save();
 
-    const incomesCount = await Income.countDocuments();
+    const incomesCount = await Income.countDocuments({
+      branch: currentUser.branch,
+    });
+
     const lastPage = Math.ceil(incomesCount / 10);
 
     res.status(201).json({ income: newIncome, lastPage });

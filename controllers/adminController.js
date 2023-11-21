@@ -1,7 +1,5 @@
 import { Admin } from "../models/adminModel.js";
 import bcrypt from "bcrypt";
-import { Student } from "../models/studentModel.js";
-import { Teacher } from "../models/teacherModel.js";
 import logger from "../config/logger.js";
 
 // Get admin

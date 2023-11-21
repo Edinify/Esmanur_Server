@@ -420,6 +420,7 @@ export const refreshToken = async (req, res) => {
             email: user.mail,
             _id: user.id,
             role: user.role,
+            fullName: user.fullName,
           });
           res.json({ accesstoken });
         }

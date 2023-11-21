@@ -1,5 +1,6 @@
 import { calcDate } from "../calculate/calculateDate.js";
 import logger from "../config/logger.js";
+import { Admin } from "../models/adminModel.js";
 import { Expense } from "../models/expenseModel.js";
 
 // Get expenses for pagination
@@ -7,12 +8,13 @@ export const getExpensesForPagination = async (req, res) => {
   const { monthCount, startDate, endDate } = req.query;
   const page = parseInt(req.query.page) || 1;
   const limit = 10;
-
-  console.log(monthCount);
+  const { id } = req.user;
 
   const targetDate = calcDate(monthCount, startDate, endDate);
 
   try {
+    const currentUser = await Admin.findById(id);
+
     let totalPages;
     let expenses;
 
@@ -21,6 +23,7 @@ export const getExpensesForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
     totalPages = Math.ceil(expensesCount / limit);
@@ -30,6 +33,7 @@ export const getExpensesForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     })
       .skip((page - 1) * limit)
       .limit(limit);
@@ -51,11 +55,16 @@ export const getExpensesForPagination = async (req, res) => {
 
 // Create expense
 export const createExpense = async (req, res) => {
+  const { id } = req.user;
   try {
+    const currentUser = await Admin.findById(id);
+
     const newExpense = new Expense(req.body);
     await newExpense.save();
 
-    const expensesCount = await Expense.countDocuments();
+    const expensesCount = await Expense.countDocuments({
+      branch: currentUser.branch,
+    });
     const lastPage = Math.ceil(expensesCount / 10);
 
     res.status(201).json({ expense: newExpense, lastPage });

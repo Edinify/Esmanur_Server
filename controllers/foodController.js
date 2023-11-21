@@ -1,5 +1,6 @@
 import { calcDate } from "../calculate/calculateDate.js";
 import logger from "../config/logger.js";
+import { Admin } from "../models/adminModel.js";
 import { Food } from "../models/foodModel.js";
 
 // Get Foods for pagination
@@ -7,10 +8,12 @@ export const getFoodsForPagination = async (req, res) => {
   const { monthCount, startDate, endDate } = req.query;
   const page = parseInt(req.query.page) || 1;
   const limit = 10;
+  const { id } = req.user;
 
   const targetDate = calcDate(monthCount, startDate, endDate);
 
   try {
+    const currentUser = await Admin.findById(id);
     let totalPages;
     let foods;
 
@@ -19,6 +22,7 @@ export const getFoodsForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
     totalPages = Math.ceil(foodsCount / limit);
@@ -30,11 +34,10 @@ export const getFoodsForPagination = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     })
       .skip((page - 1) * limit)
       .limit(limit);
-
-    console.log(foods);
 
     res.status(200).json({ foods, totalPages });
   } catch (err) {
@@ -53,11 +56,16 @@ export const getFoodsForPagination = async (req, res) => {
 
 // Create food
 export const createFood = async (req, res) => {
+  const { id } = req.user;
   try {
+    const currentUser = await Admin.findById(id);
+
     const newFood = new Food(req.body);
     await newFood.save();
 
-    const foodsCount = await Food.countDocuments();
+    const foodsCount = await Food.countDocuments({
+      branch: currentUser.branch,
+    });
     const lastPage = Math.ceil(foodsCount / 10);
 
     res.status(201).json({ food: newFood, lastPage });

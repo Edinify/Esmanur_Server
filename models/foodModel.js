@@ -32,4 +32,6 @@ const foodSchema = new Schema(
   { timestamps: true }
 );
 
+foodSchema.index({ branch: 1 });
+
 export const Food = mongoose.model("Food", foodSchema);
