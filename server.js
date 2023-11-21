@@ -20,8 +20,7 @@ import bonusRoutes from "./routes/bonusRoutes.js";
 import financeRoutes from "./routes/financeRoutes.js";
 import fineRoutes from "./routes/fineRoutes.js";
 import feedbackRoutes from "./routes/feedbackRoutes.js";
-
-
+import branchRoutes from "./routes/branchRoutes.js";
 
 dotenv.config();
 
@@ -46,6 +45,7 @@ app.use("/api/user/student", studentRoutes);
 app.use("/api/user/teacher", teacherRoutes);
 app.use("/api/user/admin", adminRoutes);
 app.use("/api/course", courseRoutes);
+app.use("/api/branch", branchRoutes);
 app.use("/api/lesson", lessonRoutes);
 app.use("/api/notification", notificationRoutes);
 app.use("/api/salary", salaryRoutes);

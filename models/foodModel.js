@@ -2,26 +2,26 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const incomeSchema = new Schema(
+const foodSchema = new Schema(
   {
-    appointment: {
+    name: {
       type: String,
+      required: true,
+    },
+    unitAmount: {
+      type: Number,
       required: true,
     },
     amount: {
       type: Number,
       required: true,
     },
-
-    date: {
-      type: Date,
+    quantity: {
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-incomeSchema.index({ date: 1 });
-incomeSchema.index({ amount: 1 });
-
-export const Income = mongoose.model("Income", incomeSchema);
+export const Food = mongoose.model("Food", foodSchema);

@@ -4,10 +4,6 @@ const Schema = mongoose.Schema;
 
 const expenseSchema = new Schema(
   {
-    category: {
-      type: String,
-      required: true,
-    },
     appointment: {
       type: String,
       required: true,
