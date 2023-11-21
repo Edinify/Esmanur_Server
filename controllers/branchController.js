@@ -1,10 +1,19 @@
 import logger from "../config/logger.js";
+import { Admin } from "../models/adminModel.js";
 import { Branch } from "../models/branchModel.js";
 
 // Get branches
 export const getBranches = async (req, res) => {
+  const { id, role } = req.user;
   try {
-    const branches = await Branch.find();
+    const filter = {};
+
+    if (role === "admin") {
+      const admin = await Admin.findById(id);
+      filter._id = admin.branch;
+    }
+
+    const branches = await Branch.find(filter);
 
     res.status(200).json(branches);
   } catch (err) {
