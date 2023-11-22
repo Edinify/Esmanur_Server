@@ -22,6 +22,7 @@ import fineRoutes from "./routes/fineRoutes.js";
 import feedbackRoutes from "./routes/feedbackRoutes.js";
 import branchRoutes from "./routes/branchRoutes.js";
 import foodRoutes from "./routes/foodRoutes.js";
+import uniformRoutes from "./routes/uniformRoutes.js";
 
 dotenv.config();
 
@@ -60,6 +61,7 @@ app.use("/api/expense", expenseRoutes);
 app.use("/api/income", incomeRoutes);
 app.use("/api/finance", financeRoutes);
 app.use("/api/feedback", feedbackRoutes);
+app.use("/api/uniform", uniformRoutes);
 
 app.get("/", (req, res) => {
   res.send("hello");
