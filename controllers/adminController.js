@@ -29,7 +29,6 @@ export const getAdmin = async (req, res) => {
 
 // Get admins
 export const getAdmins = async (req, res) => {
-  const { id } = req.user;
   try {
     const admins = await Admin.find({
       role: "admin",

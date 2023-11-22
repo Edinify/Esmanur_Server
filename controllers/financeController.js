@@ -1,14 +1,17 @@
 import { calcDate, calcDateWithMonthly } from "../calculate/calculateDate.js";
 import logger from "../config/logger.js";
-import { Earning } from "../models/earningsModel.js";
+import { Admin } from "../models/adminModel.js";
 import { Expense } from "../models/expenseModel.js";
+import { Food } from "../models/foodModel.js";
 import { Income } from "../models/incomeModel.js";
 import { Lesson } from "../models/lessonModel.js";
 
 export const getFinance = async (req, res) => {
   const { monthCount, startDate, endDate } = req.query;
+  const { id } = req.user;
 
   try {
+    const currentUser = await Admin.findById(id);
     let targetDate;
 
     if (monthCount) {
@@ -25,6 +28,7 @@ export const getFinance = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
     const expenses = await Expense.find({
@@ -32,6 +36,15 @@ export const getFinance = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
+    });
+
+    const foods = await Food.find({
+      date: {
+        $gte: targetDate.startDate,
+        $lte: targetDate.endDate,
+      },
+      branch: currentUser.branch,
     });
 
     const totalIncome = incomes.reduce(
@@ -44,28 +57,17 @@ export const getFinance = async (req, res) => {
       0
     );
 
-    const confirmedLessons = await Lesson.find({
-      date: {
-        $gte: targetDate.startDate,
-        $lte: targetDate.endDate,
-      },
-      role: "current",
-      status: "confirmed",
-    });
-
-    const totalEarnings = confirmedLessons.reduce(
-      (total, lesson) => total + lesson.earnings,
+    const totalFoodExpense = foods.reduce(
+      (total, expense) => (total += expense.amount),
       0
     );
 
-    const turnover = totalEarnings;
-
-    const profit = turnover - totalExpense;
+    const profit = totalIncome - totalExpense - totalFoodExpense;
 
     const result = {
       income: totalIncome.toFixed(2),
       expense: totalExpense.toFixed(2),
-      turnover: turnover.toFixed(2),
+      foodExpense: totalFoodExpense.toFixed(2),
       profit: profit.toFixed(2),
     };
 
