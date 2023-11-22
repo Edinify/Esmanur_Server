@@ -88,8 +88,10 @@ export const getFinance = async (req, res) => {
 
 export const getChartData = async (req, res) => {
   const { monthCount, startDate, endDate } = req.query;
+  const { id } = req.user;
 
   try {
+    const currentUser = await Admin.findById(id);
     let targetDate;
 
     if (monthCount) {
@@ -103,6 +105,7 @@ export const getChartData = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
     const expenses = await Expense.find({
@@ -110,21 +113,21 @@ export const getChartData = async (req, res) => {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
+      branch: currentUser.branch,
     });
 
-    const confirmedLessons = await Lesson.find({
+    const foods = await Food.find({
       date: {
         $gte: targetDate.startDate,
         $lte: targetDate.endDate,
       },
-      role: "current",
-      status: "confirmed",
+      branch: currentUser.branch,
     });
 
     const months = [];
     const chartIncome = [];
     const chartExpense = [];
-    const chartTurnover = [];
+    const chartFoodExpense = [];
     const chartProfit = [];
 
     while (targetDate.startDate <= targetDate.endDate) {
@@ -143,10 +146,10 @@ export const getChartData = async (req, res) => {
           expense.date?.getFullYear() === targetYear
       );
 
-      const filteredLessons = confirmedLessons.filter(
-        (lesson) =>
-          lesson.date?.getMonth() === targetMonth &&
-          lesson.date?.getFullYear() === targetYear
+      const filteredFoodExpenses = foods.filter(
+        (expense) =>
+          expense.date?.getMonth() === targetMonth &&
+          expense.date?.getFullYear() === targetYear
       );
 
       const totalIncome = filteredIncomes.reduce(
@@ -159,14 +162,12 @@ export const getChartData = async (req, res) => {
         0
       );
 
-      const totalEarnings = filteredLessons.reduce(
-        (total, lesson) => total + lesson.earnings,
+      const totalFoodExpense = filteredFoodExpenses.reduce(
+        (total, expense) => (total += expense.amount),
         0
       );
 
-      const turnover = totalEarnings;
-
-      const profit = turnover - totalExpense;
+      const profit = totalIncome - totalExpense - totalFoodExpense;
 
       const monthName = new Intl.DateTimeFormat("en-US", {
         month: "long",
@@ -175,15 +176,19 @@ export const getChartData = async (req, res) => {
       months.push({ month: monthName, year: targetYear });
       chartIncome.push(totalIncome.toFixed(2));
       chartExpense.push(totalExpense.toFixed(2));
-      chartTurnover.push(turnover.toFixed(2));
+      chartFoodExpense.push(totalFoodExpense.toFixed(2));
       chartProfit.push(profit.toFixed(2));
 
       targetDate.startDate.setMonth(targetDate.startDate.getMonth() + 1);
     }
 
-    res
-      .status(200)
-      .json({ months, chartIncome, chartExpense, chartTurnover, chartProfit });
+    res.status(200).json({
+      months,
+      chartIncome,
+      chartExpense,
+      chartFoodExpense,
+      chartProfit,
+    });
   } catch (err) {
     logger.error({
       method: "GET",
