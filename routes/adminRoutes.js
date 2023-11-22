@@ -6,6 +6,7 @@ import {
   updateAdmin,
   updateAdminPassword,
   updateAdminPasswordWithoutCheckingOldPassword,
+  updateSuperAdmin,
 } from "../controllers/adminController.js";
 import {
   authMiddleware,
@@ -18,6 +19,7 @@ const router = express.Router();
 router.get("/", authMiddleware, checkSuperAdmin, getAdmins);
 router.get("/current", authMiddleware, getAdmin);
 router.patch("/:id", authMiddleware, checkSuperAdmin, updateAdmin);
+router.patch("/super/:id", authMiddleware, checkSuperAdmin, updateSuperAdmin);
 router.patch(
   "/me/password",
   authMiddleware,

@@ -47,7 +47,9 @@ export const registerAdmin = async (req, res) => {
   try {
     const regexEmail = new RegExp(email, "i");
 
-    const existingAdmin = await Admin.findOne({ email: regexEmail });
+    const existingAdmin = await Admin.findOne({
+      email: { $regex: regexEmail },
+    });
 
     if (existingAdmin) {
       return res.status(409).json({ key: "email-already-exist" });

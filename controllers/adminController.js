@@ -47,6 +47,28 @@ export const getAdmins = async (req, res) => {
   }
 };
 
+// Update super admin
+export const updateSuperAdmin = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedSuperAdmin = await Admin.findByIdAndUpdate(id, {
+      branch: req.body.branch,
+    }).select("-password");
+
+    if (!updatedSuperAdmin) {
+      return res.status(404).json({ key: "user-not-found" });
+    }
+
+    res.status(200).json(updatedSuperAdmin);
+  } catch (err) {
+    res.status(500).json({
+      message: {
+        error: err.message,
+      },
+    });
+  }
+};
+
 // Update Admin
 export const updateAdmin = async (req, res) => {
   const { id } = req.params;
@@ -56,10 +78,12 @@ export const updateAdmin = async (req, res) => {
   try {
     const regexEmail = email ? new RegExp(updatedData.email, "i") : null;
 
-    const existingAdmin = await Admin.findOne({ email: regexEmail });
+    const existingAdmin = await Admin.findOne({
+      _id: { $ne: id },
+      email: { $regex: regexEmail },
+    });
 
-    console.log(existingAdmin);
-    if (existingAdmin && existingAdmin._id != id) {
+    if (existingAdmin) {
       return res.status(409).json({ key: "email-already-exist" });
     }
 
@@ -70,6 +94,8 @@ export const updateAdmin = async (req, res) => {
     } else {
       delete updatedData.password;
     }
+
+    console.log(updatedData);
 
     const newAdmin = await Admin.findByIdAndUpdate(id, updatedData, {
       new: true,

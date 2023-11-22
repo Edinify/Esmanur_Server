@@ -67,6 +67,7 @@ export const updateBranch = async (req, res) => {
 
   try {
     const existingBranch = await Branch.findOne({
+      _id: { $ne: id },
       name: { $regex: new RegExp(name, "i") },
     });
 
