@@ -51,9 +51,13 @@ export const getAdmins = async (req, res) => {
 export const updateSuperAdmin = async (req, res) => {
   const { id } = req.params;
   try {
-    const updatedSuperAdmin = await Admin.findByIdAndUpdate(id, {
-      branch: req.body.branch,
-    }).select("-password");
+    const updatedSuperAdmin = await Admin.findByIdAndUpdate(
+      id,
+      {
+        branch: req.body.branch,
+      },
+      { new: true }
+    ).select("-password");
 
     if (!updatedSuperAdmin) {
       return res.status(404).json({ key: "user-not-found" });
