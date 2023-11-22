@@ -29,8 +29,13 @@ export const getAdmin = async (req, res) => {
 
 // Get admins
 export const getAdmins = async (req, res) => {
+  const { id } = req.user;
   try {
-    const admins = await Admin.find({ role: "admin" }).select("-password");
+    const currentUser = await Admin.findById(id);
+    const admins = await Admin.find({
+      role: "admin",
+      branch: currentUser.branch,
+    }).select("-password");
 
     res.status(200).json(admins);
   } catch (err) {
