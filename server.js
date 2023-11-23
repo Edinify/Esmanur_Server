@@ -67,13 +67,6 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-// wbm.start().then(async () => {
-//   const phones = ['123456'];
-//   const message = 'Good Morning.';
-//   await wbm.send(phones, message);
-//   await wbm.end();
-// }).catch(err => console.log(err));
-
 mongoose
   .connect(uri)
   .then(() => {
