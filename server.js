@@ -30,7 +30,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const uri = process.env.DB_URI
-app.use(express.static(path.join(__dirname, '/Esmanur_client/build')))
+app.use(express.static(path.join(__dirname, '/client/build')))
 
 app.use(
   cors({
