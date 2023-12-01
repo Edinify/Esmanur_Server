@@ -1,0 +1,22 @@
+.error-page {
+    /* margin-top: 56px; */
+    padding-bottom: 30px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-page h1 {
+    color: rgb(240, 21, 21);
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+.error-page svg {
+    width: 80px;
+    height: 80px;
+}
+.error-page svg path {
+    fill: rgb(240, 21, 21);
+}

@@ -5,9 +5,9 @@ name: Build and deploy Node.js app to Azure Web App - esmanur
 
 on:
   push:
-    branches:
-      - production
-  workflow_dispatch:
+    branches: [production]
+  pull_request:
+    branches: [production]
 
 jobs:
   build:
@@ -24,8 +24,9 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          cd Esmanur_client
+          npm i --force
+          npm run build
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r

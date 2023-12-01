@@ -1,0 +1,113 @@
+.salary-bonus-modal {
+  border-radius: 8px;
+  /* padding: 12px 0 16px 12px; */
+  z-index: 100;
+  /* position: fixed; */
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 30px;
+  /* top: -26px; */
+}
+.salary-bonus-modal.edit-bonus-modal{
+  right: 105px;
+}
+
+.salary-bonus-modal .salary-bonus-con {
+  width: 340px;
+  background-color: white;
+  box-shadow: -2px 4px 12px 0px rgba(0, 0, 0, 0.15),
+    2px -2px 12px 0px rgba(0, 0, 0, 0.15);
+  padding: 12px 16px 16px 12px;
+  height: 100%;
+  border-radius: 8px;
+}
+.salary-bonus-modal .salary-bonus-con .salary-modal-header {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+  position: relative;
+}
+.salary-bonus-modal .salary-bonus-con .salary-modal-header h2 {
+  font-size: 18px;
+  color: var(--neutrals-900);
+  font-weight: 700;
+}
+
+.salary-bonus-modal .salary-modal-header .salary-modal-header-icons {
+  display: flex;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-left: 12px;
+  padding: 6px;
+}
+
+.salary-bonus-modal
+  .salary-modal-header
+  .salary-modal-header-icons
+  .header-icon-edit {
+  padding: 7px;
+  border-radius: 19px;
+  background: var(--primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.salary-bonus-modal .salary-bonus-con .salary-bonus-inputs {
+  margin-top: 24px;
+  position: relative;
+}
+.salary-bonus-inputs
+  .css-194lros-MuiFormControl-root-MuiTextField-root:nth-child(2) {
+  margin-top: 16px;
+}
+
+.salary-bonus-modal .salary-bonus-con .salary-bonus-update-icons {
+  display: flex;
+}
+.salary-bonus-modal
+  .salary-bonus-con
+  .salary-bonus-update-icons
+  .create-update-modal-btn {
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 24px;
+}
+
+.salary-bonus-modal
+  .salary-bonus-con
+  .salary-bonus-update-icons
+  .create-update-modal-btn
+  button {
+  margin: 0;
+}
+.salary-bonus-modal.edit-bonus-modal .salary-bonus-con .salary-edit-btns{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+.salary-bonus-modal.edit-bonus-modal .salary-bonus-con .salary-edit-btns  .create-update-modal-btn.update {
+  margin: 0;
+}
+
+
+@media screen and (max-width:1280px) {
+  .salary-bonus-modal {
+    position: relative;
+    top: 0;
+    right:0
+  }
+
+  .salary-bonus-modal.edit-bonus-modal{
+    right: 0;
+  }
+}

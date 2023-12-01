@@ -1,0 +1,459 @@
+.dashboard-page {
+  padding-bottom: 30px;
+}
+.dashboard-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--neutrals-200);
+  z-index: -1;
+}
+.dashboard-main {
+  display: flex;
+}
+.dashboard-main.tablet,
+.dashboard-main.mobile {
+  display: none;
+}
+.dashboard-main > .left {
+  width: 25%;
+  margin-right: 16px;
+}
+.dashboard-main > .right {
+  width: 75%;
+}
+.dashboard-main > .right > .top {
+  display: flex;
+  margin-bottom: 16px;
+}
+.dashboard-main > .left section {
+  margin-bottom: 12px;
+}
+.dashboard-main > .left .content-box,
+.dashboard-main > .right > .top .content-box,
+.dashboard-main .lessons-amount .content-box,
+.dashboard-main .lesson-statistics .content-box,
+.dashboard-main .where-heard .content-box,
+.dashboard-main .students-amount .content-box,
+.dashboard-main .finance-statictics .content-box.finance {
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
+/* LESSON AMOUNT FINANCE STATISTICS */
+.dashboard-main .finance-statictics .tablet-last-box {
+    display: none;
+}
+.dashboard-main .lessons-amount .content-box,
+.dashboard-main .finance-statictics .content-box.finance {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+.dashboard-main .lessons-amount .content-box:last-child,
+.dashboard-main .finance-statictics .content-box.finance:last-child {
+  margin-bottom: 0;
+}
+.dashboard-main .lessons-amount .content-box > .left,
+.dashboard-main .finance-statictics .content-box.finance > .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 6px;
+  margin-right: 12px;
+}
+.dashboard-main .lessons-amount .content-box > .left.green,
+.dashboard-main .finance-statictics .content-box.finance > .left.green {
+  background-color: rgba(0, 188, 133, 0.1);
+}
+.dashboard-main .lessons-amount .content-box > .left.red,
+.dashboard-main .finance-statictics .content-box.finance > .left.red {
+  background-color: rgba(240, 59, 42, 0.1);
+}
+.dashboard-main .lessons-amount .content-box > .left.grey {
+  background-color: rgba(113, 113, 113, 0.1);
+}
+.dashboard-main .finance-statictics .content-box.finance > .left.blue {
+  background-color: rgba(5, 165, 234, 0.1);
+}
+.dashboard-main .finance-statictics .content-box.finance > .left.orange {
+  background-color: rgba(251, 160, 19, 0.1);
+}
+.dashboard-main .lessons-amount .content-box > .right,
+.dashboard-main .finance-statictics .content-box.finance > .right {
+  width: 100%;
+}
+.dashboard-main .lessons-amount .content-box > .right .top,
+.dashboard-main .finance-statictics .content-box.finance > .right .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.dashboard-main .lessons-amount .content-box > .right .top svg {
+  cursor: pointer;
+}
+.dashboard-main .lessons-amount .content-box > .right .title,
+.dashboard-main .finance-statictics .content-box.finance > .right .title {
+  color: var(--neutrals-600);
+  font-size: 16px;
+  font-weight: 600;
+}
+.dashboard-main .finance-statictics .content-box.finance > .right .top .diff-pointer {
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 2px 4px;
+}
+.dashboard-main .finance-statictics .content-box.finance > .right .top .diff-pointer.plus {
+  color: #00bc85;
+  background-color: rgba(0, 188, 133, 0.1);
+}
+.dashboard-main .finance-statictics .content-box.finance > .right .top .diff-pointer.minus {
+  color: var(--error-600);
+  background-color: rgba(240, 59, 42, 0.1);
+}
+.dashboard-main .lessons-amount .content-box > .right .amount,
+.dashboard-main .finance-statictics .content-box.finance > .right .amount {
+  color: var(--neutrals-900);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* LESSON STATISITCS */
+
+
+/* WHERE HEARD */
+.dashboard-main .where-heard .content-box > .top {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-main .lesson-statistics .content-box > .top .title,
+.dashboard-main .where-heard .content-box > .top .title {
+  color: var(--neutrals-900);
+  font-size: 20px;
+  font-weight: 700;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con {
+  margin-bottom: 20px;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:last-child {
+  margin-bottom: 0;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con h5 {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con .line {
+  width: 10px;
+  height: 8px;
+  border-radius: 4px;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(1) h5 {
+  color: #00bc85;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(1) .line {
+  background-color: #00bc85;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(2) h5 {
+  color: var(--secondary-500);
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(2) .line {
+  background-color: var(--secondary-500);
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(3) h5 {
+  color: var(--tertiary-600);
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(3) .line {
+  background-color: var(--tertiary-600);
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(4) h5 {
+  color: #fb1616;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(4) .line {
+  background-color: #fb1616;
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(5) h5 {
+  color: var(--neutrals-400);
+}
+.dashboard-main .where-heard .content-box > .bottom .linear-con:nth-child(5) .line {
+  background-color: var(--neutrals-400);
+}
+
+/* STUDENTS AMOUNT */
+.dashboard-main .students-amount {
+  width: 65%;
+  margin-right: 16px;
+}
+.dashboard-main .finance-statictics {
+  width: 35%;
+}
+.dashboard-main .students-amount .content-box {
+  height: 100%;
+}
+.dashboard-main .students-amount .content-box > .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard-main .students-amount .content-box > .top .title {
+  color: var(--neutrals-900);
+  font-size: 24px;
+  font-weight: 700;
+}
+.dashboard-main .students-amount .content-box > .bottom {
+  height: 85%;
+}
+
+
+@media screen and (min-width: 700px) and (max-width: 1280px) {
+  .dashboard-main.desktop {
+    display: none;
+  }
+  .dashboard-main.tablet {
+    display: block;
+  }
+
+  /* LESSON AMOUNT */
+  .dashboard-main .lessons-amount {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 12px;
+  }
+  .dashboard-main .lessons-amount .content-box {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+  .dashboard-main .lessons-amount .content-box:last-child {
+    margin-right: 0;
+  }
+  .dashboard-main > .left .content-box,
+  .dashboard-main > .right > .top .content-box,
+  .dashboard-main .lessons-amount .content-box,
+  .dashboard-main .lesson-statistics .content-box,
+  .dashboard-main .where-heard .content-box,
+  .dashboard-main > .students-amount .content-box,
+  .dashboard-main > .finance-statictics .content-box.finance {
+    padding: 8px;
+  }
+  .dashboard-main .lessons-amount .content-box>.left, 
+  .dashboard-main .finance-statictics .content-box.finance>.left {
+    margin-right: 6px;
+    padding: 6.43px;
+  }
+  .dashboard-main .lessons-amount .content-box>.left svg, 
+  .dashboard-main .finance-statictics .content-box.finance>.left svg {
+    width: 23px;
+    height: 23px;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .title,
+  .dashboard-main .finance-statictics .content-box.finance > .right .title {
+    font-size: 14px;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .amount,
+  .dashboard-main .finance-statictics .content-box.finance > .right .amount  {
+    font-size: 18px;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .top, 
+  .dashboard-main .finance-statictics .content-box.finance > .right .top {
+    margin-bottom: 0;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .right .top .diff-pointer {
+    font-size: 8px;
+  }
+
+
+  /* FINANCE */
+  .dashboard-main .finance-statictics {
+    width: 100%;
+  }
+  .dashboard-main .finance-statictics .finance-statictics-con {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  .dashboard-main .finance-statictics .content-box.finance.last {
+    display: none;
+  }
+  .dashboard-main .finance-statictics .content-box.finance {
+    margin-right: 8px;
+    height: 59.5px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance:nth-child(3) {
+    margin-right: 0;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .left {
+    margin-right: 8px;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .content-box.finance {
+    margin-right: 0;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .students-amount {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+  
+  /* WHERE HEARD LESSON STATISTICS */
+  .dashboard-main .finance-statictics .tablet-last-box .lesson-statistics {
+    margin-bottom: 12px;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .lesson-statistics .content-box > .top .title, 
+  .dashboard-main .finance-statictics .tablet-last-box .where-heard .content-box > .top .title {
+    font-size: 16px;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .where-heard .content-box > .bottom .linear-con h5 {
+    font-size: 12px;
+  }
+  .dashboard-main .finance-statictics .tablet-last-box .where-heard .content-box > .bottom .linear-con .line {
+    height: 6px;
+  }
+
+  .dashboard-main .students-amount .content-box {
+    padding: 12px;
+  }
+  .dashboard-main .students-amount .content-box > .top .title {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard-main.desktop {
+    display: none;
+  }
+  .dashboard-main.mobile {
+    display: block;
+  }
+
+  /* LESSON AMOUNT */
+  .dashboard-main .lessons-amount {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 12px;
+  }
+  .dashboard-main .lessons-amount .content-box {
+    margin-bottom: 0;
+    margin-right: 8px;
+    flex-direction: column;
+    padding: 6px;
+  }
+  .dashboard-main .lessons-amount .content-box:last-child {
+    margin-right: 0;
+  }
+  .dashboard-main .lessons-amount .content-box > .left {
+    width: 100%;
+    height: 32px;
+    padding: 5.71px;
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+  .dashboard-main .lessons-amount .content-box > .left svg {
+    width: 24px;
+    height: 24px;
+  }
+  .dashboard-main .lessons-amount .content-box > .right {
+    margin-bottom: 4px;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .top {
+    justify-content: center;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .title {
+    font-size: 12px;
+    text-align: center;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .amount {
+    font-size: 16px;
+    text-align: center;
+  }
+  .dashboard-main .lessons-amount .content-box > .right .top svg {
+    display: none;
+  }
+
+
+  /* FINANCE STATISTICS */
+  .dashboard-main .finance-statictics {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .dashboard-main .finance-statictics .finance-statictics-con {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .dashboard-main .finance-statictics .content-box.finance {
+    margin-bottom: 8px;
+    padding: 9px 6px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance:nth-child(3),
+  .dashboard-main .finance-statictics .content-box.finance:nth-child(4) {
+    margin-bottom: 0;
+  }
+  .dashboard-main .finance-statictics .content-box.finance:nth-child(1),
+  .dashboard-main .finance-statictics .content-box.finance:nth-child(3) {
+    margin-right: 8px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .left {
+    height: 36px;
+    width: 36px;
+    padding: 6.43px;
+    margin-right: 6px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .right .top {
+    margin-bottom: 0;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .right .amount {
+    font-size: 16px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .right .title {
+    font-size: 12px;
+  }
+  .dashboard-main .finance-statictics .content-box.finance > .right .top .diff-pointer {
+    display: none;
+  }
+
+  /* STUDENT AMOUNT */
+  .dashboard-main .students-amount {
+    width: 100%;
+    margin-bottom: 12px;
+    height: 265px;
+  }
+  .dashboard-main .students-amount .content-box {
+    padding: 8px;
+  }
+  .dashboard-main .students-amount .content-box > .top .title {
+    font-size: 20px;
+  }
+
+  /* WHERE HEARD */
+  .dashboard-main .where-heard {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .dashboard-main .where-heard .content-box {
+    padding: 8px;
+  }
+  .dashboard-main .where-heard .content-box > .top .title {
+    font-size: 18px;
+  }
+  .dashboard-main .where-heard .content-box > .bottom .linear-con {
+    margin-bottom: 16px;
+  }
+}
+
+
+
+  

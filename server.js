@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -28,7 +29,8 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
-const uri = process.env.DB_URI;
+const uri = process.env.DB_URI
+app.use(express.static(path.join(__dirname, '/Esmanur_client/build')))
 
 app.use(
   cors({

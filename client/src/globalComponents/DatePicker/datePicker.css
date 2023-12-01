@@ -1,0 +1,73 @@
+.date-container {
+  display: flex;
+}
+.date-container .date-picker-a {
+  display: flex;
+  width: 292px;
+  height: 51px;
+  background-color: #f4f4f4;
+  align-items: center;
+  padding: 0 12px;
+  justify-content: space-between;
+  border: 0.4px solid #dddddd;
+  border-radius: 8px;
+}
+.date-container .from {
+  width: 50%;
+}
+.date-container .to {
+  margin-left: 16px;
+  width: 50%;
+}
+.date-container .date-picker-a h4 {
+  color: #9a9a9a;
+  font-size: 16px;
+  font-weight: 600;
+}
+.date-picker-a svg {
+  width: 20px;
+  height: 20px;
+}
+.react-datepicker__input-container {
+  border: none;
+}
+.react-datepicker-wrapper {
+  width: 112px;
+}
+
+.react-datepicker__input-container input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #717171;
+  background-color: #f4f4f4;
+  width: 100%;
+  font-weight: 600;
+}
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  width: 2rem;
+  line-height: 2rem;
+  font-size: 14px;
+}
+.react-datepicker-popper[data-placement^="bottom"] {
+  z-index: 10;
+}
+
+@media screen and (max-width: 1100px) {
+  .react-datepicker__input-container input {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .react-datepicker__input-container input::placeholder {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .react-datepicker__input-container input {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,63 @@
+.stimulation-head {
+    background-color: var(--neutrals-200);
+    height: 75px;
+  }
+  .stimulation-head .stimulation-head-content {
+    padding: 24px 16px 0 16px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+  }
+  
+  .stimulation-head .stimulation-head-content ul {
+      display: flex;
+  }
+  .stimulation-head .stimulation-head-content ul li a {
+    height: 51px;
+    /* width: 120px; */
+    padding: 8px 24px;
+    list-style: none;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 28px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    color: var(--neutrals-600);
+  }
+  .stimulation-head .stimulation-head-content ul a.active {
+    color: var(--neutrals-900);
+    background-color: white;
+    font-weight: 600;
+  }
+  
+  .stimulation-head .stimulation-head-content .add-stimul {
+    width: 200px;
+    background-color: var(--primary-500);
+    border-radius: 8px;
+    padding: 10px 24px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 26px;
+  }
+  .stimulation-head .stimulation-head-content .add-stimul h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+  
+  
+  @media screen and (max-width:500px) {
+    .stimulation-head .stimulation-head-content .add-stimul{
+      width: 140px;
+    }
+  }
+  

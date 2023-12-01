@@ -1,0 +1,25 @@
+.loading-in-modal-button .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+.create-update-modal-dropdown .loading-in-modal-button .lds-dual-ring:after {
+  width: 20px;
+  height: 20px;
+  border: 4px solid var(--primary-500);
+  border-color: var(--primary-500) transparent var(--primary-500) transparent;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

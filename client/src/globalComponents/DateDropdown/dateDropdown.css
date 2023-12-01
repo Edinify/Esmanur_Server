@@ -1,0 +1,169 @@
+.date-filter-dropdown {
+  position: relative;
+  min-width: 85px;
+}
+.date-filter-dropdown .modal-full-bg {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.date-filter-dropdown .calendar {
+  position: relative;
+  z-index: 10;
+}
+.date-filter-dropdown .dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+.date-filter-dropdown .dropdown-head p {
+  font-size: 12px;
+  font-weight: 400;
+  margin-right: 4px;
+  user-select: none;
+}
+.date-filter-dropdown .dropdown-head .dropdown-icon {
+  display: flex;
+  transition: 0.3s;
+}
+.date-filter-dropdown .dropdown-head .dropdown-icon.down {
+  transform: rotate(0deg);
+}
+.date-filter-dropdown .dropdown-head .dropdown-icon.up {
+  transform: rotate(180deg);
+}
+.date-filter-dropdown .dropdown-body {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
+  padding: 8px;
+  pointer-events: none;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 0.3s;
+  z-index: 15;
+}
+.date-filter-dropdown .dropdown-body.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: unset;
+}
+.date-filter-dropdown .dropdown-body ul li {
+  color: var(--neutrals-600);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  user-select: none;
+  cursor: pointer;
+}
+.date-filter-dropdown .dropdown-body ul li:last-child {
+  margin-bottom: 0;
+}
+.date-filter-dropdown .dropdown-body ul li.active {
+  color: var(--primary-500);
+}
+
+.date-filter-dropdown.calendar-dropdown .calendar svg {
+  cursor: pointer;
+}
+.date-filter-dropdown.calendar-dropdown > .calendar svg path {
+  transition: 0.3s;
+}
+.date-filter-dropdown.calendar-dropdown
+  > .calendar.active
+  svg
+  path {
+  stroke: var(--primary-500);
+}
+.date-filter-dropdown.calendar-dropdown {
+  min-width: auto;
+}
+.date-filter-dropdown.calendar-dropdown .dropdown-body {
+  width: 85px;
+  top: 29px;
+}
+/* diff */
+.dashboard-main .students-amount .date-filter-dropdown .dropdown-head,
+.teacher-home .teacher-lesson-statistics .date-filter-dropdown .dropdown-head,
+.teacher-home .lessons-amount .date-filter-dropdown .dropdown-head {
+  border: 1px solid var(--neutrals-300, #ddd);
+}
+.dashboard-main .leaderboard .date-filter-dropdown .dropdown-head {
+  border: 1px solid var(--neutrals-800);
+}
+.dashboard-main .students-amount .date-filter-dropdown .dropdown-head p {
+  color: var(--neutrals-600);
+}
+.dashboard-main .leaderboard .date-filter-dropdown .dropdown-head p,
+.teacher-home .leaderboard .date-filter-dropdown .dropdown-head p {
+  color: var(--neutrals-800);
+}
+/* diff */
+
+/* DATEPICKER */
+.date-filter-dropdown .date-filter {
+  position: absolute;
+  left: 0;
+  bottom: -37px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 360px;
+}
+/* diff */
+.dashboard-main .leaderboard .date-filter-dropdown .date-filter,
+.dashboard-main .students-amount .date-filter-dropdown .date-filter,
+.teacher-home .leaderboard .date-filter-dropdown .date-filter,
+.teacher-home .students-amount .date-filter-dropdown .date-filter {
+  right: 0;
+  left: auto;
+}
+/* diff */
+
+.date-filter-dropdown .date-filter .apply-btn {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background: var(--primary-500);
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+@media screen and (max-width: 1280px) {
+  .date-filter-dropdown .dropdown-head {
+    padding: 6px;
+  }
+  .date-filter-dropdown .calendar svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-main .ant-picker-panels {
+    flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard-main .lessons-amount .date-filter-dropdown.calendar-dropdown {
+    display: none;
+  }
+}

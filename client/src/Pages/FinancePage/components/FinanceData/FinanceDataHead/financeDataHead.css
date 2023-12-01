@@ -1,0 +1,100 @@
+.finance-page .finance-data-head > .top {
+  background: var(--neutrals-200, #ececec);
+  padding: 16px 0 0 16px;
+  width: 100%;
+  display: flex;
+}
+.finance-page .finance-data-head > .top .data-type {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 24px;
+  border-radius: 8px 8px 0px 0px;
+  color: var(--neutrals-600);
+  cursor: pointer;
+}
+.finance-page .finance-data-head > .top .data-type.active {
+  background: #fff;
+  color: var(--neutrals-900);
+}
+.finance-page .finance-data-head > .bottom {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.finance-page .finance-data-head > .bottom > .left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 50%;
+}
+.finance-page .finance-data-head > .bottom > .right .add-btn {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--primary-500);
+  padding: 10px 24px;
+  cursor: pointer;
+}
+.finance-page .finance-data-head > .bottom > .right .add-btn svg {
+  margin-right: 8px;
+}
+
+
+@media screen and (max-width: 1110px) {
+  .finance-page .finance-data-head > .bottom {
+    padding: 24px 16px;
+  }
+  .finance-page .finance-data-head > .bottom > .left {
+    width: auto;
+  }
+  .finance-page .finance-data-head > .bottom .finance-dropdown {
+    width: 200px;
+  }
+  .finance-page .finance-data-head > .bottom > .right .add-btn {
+    padding: 9px 20px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .finance-page .finance-data-head > .top {
+    padding: 16px 0 0 12px;
+  }
+  .finance-page .finance-data-head > .bottom {
+    padding: 24px 12px;
+    flex-direction: column;
+  }
+  .finance-page .finance-data-head > .bottom > .left {
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  .finance-page .finance-data-head > .bottom > .right {
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+  }
+  .finance-page .finance-data-head > .bottom .finance-dropdown {
+    width: 100%;
+  }
+  .finance-page .finance-data-head > .bottom > .right .add-btn {
+    padding: 9px 16px;
+  }
+  .finance-page .finance-data-head > .bottom > .right .add-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .finance-page .finance-data-head > .top .data-type {
+    padding: 8px 16px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .finance-page .finance-data-head > .top .data-type {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}

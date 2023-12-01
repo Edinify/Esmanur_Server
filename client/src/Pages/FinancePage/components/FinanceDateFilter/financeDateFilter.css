@@ -1,0 +1,94 @@
+.finance-page .finance-date-filter-con {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 24px;
+}
+.finance-page .finance-date-filter.desktop {
+  display: flex;
+}
+.finance-page .finance-date-filter.mobile {
+  display: none;
+}
+.finance-page .finance-date-filter .content-box {
+  color: var(--neutrals-600);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-right: 12px;
+  background: var(--neutrals-100);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.finance-page .finance-date-filter .content-box:last-child {
+  margin-right: 0;
+}
+.finance-page .finance-date-filter .content-box.active {
+  background: var(--primary-500);
+  color: #fff;
+}
+
+/* DATE PICKER */
+.finance-page .finance-date-filter-con .date-filter {
+  position: absolute;
+  left: 0;
+  bottom: -44px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+.finance-page .finance-date-filter-con .date-filter .apply-btn {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background: var(--primary-500);
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+/* DATE PICKER END */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: auto !important;
+}
+
+@media screen and (max-width: 690px) {
+  .finance-page .finance-date-filter-co :where(.css-dev-only-do-not-override-1jr9qlj).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
+    flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .finance-page .finance-date-filter-con {
+    margin-bottom: 16px;
+  }
+  .finance-page .finance-date-filter .content-box {
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .finance-page .finance-date-filter.desktop {
+    display: none;
+  }
+  .finance-page .finance-date-filter.mobile {
+    display: flex;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .finance-page .finance-date-filter-con .date-filter .apply-btn {
+    padding: 8px 9px;
+  }
+}

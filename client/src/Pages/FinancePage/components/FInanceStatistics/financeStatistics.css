@@ -1,0 +1,168 @@
+.finance-page {
+}
+.finance-page .finance-statictics .content-box.finance {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px;
+  padding: 12px;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  background: var(--neutrals-100);
+}
+.finance-page .finance-statictics .content-box.finance:last-child {
+  margin-bottom: 0;
+}
+.finance-page .finance-statictics .content-box.finance > .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  margin-right: 12px;
+  padding: 8.57px;
+  /* width: 48px;
+  height: 48px; */
+}
+.finance-page .finance-statictics .content-box.finance > .left svg {
+  width: 30.857px;
+  height: 30.857px;
+}
+.finance-page .finance-statictics .content-box.finance > .left.green {
+  background-color: rgba(0, 188, 133, 0.1);
+}
+.finance-page .finance-statictics .content-box.finance > .left.red {
+  background-color: rgba(240, 59, 42, 0.1);
+}
+.finance-page .finance-statictics .content-box.finance > .left.blue {
+  background-color: rgba(5, 165, 234, 0.1);
+}
+.finance-page .finance-statictics .content-box.finance > .left.orange {
+  background-color: rgba(251, 160, 19, 0.1);
+}
+.finance-page .finance-statictics .content-box.finance > .right {
+  width: 100%;
+}
+.finance-page .finance-statictics .content-box.finance > .right .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.finance-page .finance-statictics .content-box.finance > .right .title {
+  color: var(--neutrals-600);
+  font-size: 14px;
+  font-weight: 600;
+}
+.finance-page
+  .finance-statictics
+  .content-box.finance
+  > .right
+  /* .top */
+  .diff-pointer {
+  font-size: 10px;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 2px 4px;
+  height: 15px;
+}
+.finance-page
+  .finance-statictics
+  .content-box.finance
+  > .right
+  /* .top */
+  .diff-pointer.plus {
+  color: #00bc85;
+  background-color: rgba(0, 188, 133, 0.1);
+}
+.finance-page
+  .finance-statictics
+  .content-box.finance
+  > .right
+  /* .top */
+  .diff-pointer.minus {
+  color: var(--error-600);
+  background-color: rgba(240, 59, 42, 0.1);
+}
+.finance-page
+  .finance-statictics
+  .content-box.finance
+  > .right
+  .amount
+  .diff-pointer {
+  display: none;
+}
+.finance-page .finance-statictics .content-box.finance > .right .amount {
+  color: var(--neutrals-900);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1110px) {
+  .finance-page .finance-statictics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .finance-page .finance-statictics .content-box.finance {
+    margin-bottom: 0;
+  }
+  .finance-page .finance-statictics .content-box.finance > .left {
+    /* width: 36px;
+    height: 36px; */
+    padding: 6.43px;
+    margin-right: 8px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .left svg {
+    width: 23.143px;
+    height: 23.143px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .right .amount {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .finance-page
+    .finance-statictics
+    .content-box.finance
+    > .right
+    .top
+    .diff-pointer {
+    display: none;
+  }
+  .finance-page
+    .finance-statictics
+    .content-box.finance
+    > .right
+    .amount
+    .diff-pointer {
+    display: inline;
+  }
+  .finance-page
+    .finance-statictics
+    .content-box.finance
+    > .right
+    .top
+    .diff-pointer {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .finance-page .finance-statictics .content-box.finance {
+    padding: 9px 6px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .left {
+    margin-right: 6px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .right .title {
+    font-size: 12px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .right .amount {
+    font-size: 16px;
+  }
+  .finance-page .finance-statictics .content-box.finance > .right .amount .diff-pointer {
+    display: none;
+  }
+}

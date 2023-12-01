@@ -1,0 +1,269 @@
+.feedback-page .feedback-head {
+  padding: 24px 0;
+}
+.salary-page .salary-head {
+  background: var(--neutrals-200);
+  padding-bottom: 16px;
+}
+.stimulations-page .stimulation-search-head {
+  padding: 24px 0;
+}
+.search-date-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-date-filter > .left .search-form .input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-date-filter > .left .search-form .input-box input {
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 12px 10px 40px;
+}
+.search-date-filter.white > .left .search-form .input-box input {
+  background: #fff;
+}
+.search-date-filter.gray > .left .search-form .input-box input {
+  background: var(--neutrals-100, #f4f4f4);
+}
+.search-date-filter > .left .search-form .input-box input::placeholder {
+  color: var(--neutrals-600, #717171);
+}
+.search-date-filter > .left .search-form .input-box .search-icon {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  cursor: pointer;
+}
+.search-date-filter > .right {
+  display: flex;
+  align-items: center;
+}
+.search-date-filter > .right .date-container .from,
+.search-date-filter > .right .date-container .to {
+  width: 236px;
+}
+.search-date-filter > .right .date-container .to {
+  margin-left: 8px;
+}
+.search-date-filter > .right .date-container .date-picker-a {
+  height: 41.5px;
+  border-radius: 8px;
+  border: 0.4px solid var(--neutrals-300, #ddd);
+}
+.search-date-filter.white > .right .date-container .date-picker-a {
+  background: #fff;
+}
+.search-date-filter.gray > .right .date-container .date-picker-a {
+  background: var(--neutrals-100, #f4f4f4);
+}
+.search-date-filter.white
+  > .right
+  .date-container
+  .date-picker-a
+  .react-datepicker__input-container
+  input {
+  background: #fff;
+}
+.search-date-filter.gray
+  > .right
+  .date-container
+  .date-picker-a
+  .react-datepicker__input-container
+  input {
+  background: var(--neutrals-100, #f4f4f4);
+}
+.search-date-filter > .right .buttons-con {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+.search-date-filter > .right .buttons-con .apply-btn {
+  border-radius: 8px;
+  background: var(--primary-500, #462aff);
+  padding: 10px 24px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+.search-date-filter > .right .buttons-con .apply-btn:hover {
+  background-color: var(--primary-700);
+}
+.search-date-filter > .right .buttons-con .clear-btn {
+  padding: 10px 16px;
+  color: var(--neutrals-500, #9a9a9a);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.search-date-filter > .right .datepicker-filter-modal-btn {
+  color: var(--neutrals-600);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 0.4px solid var(--neutrals-300);
+  padding: 10px 12px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+}
+.search-date-filter.white > .right .datepicker-filter-modal-btn {
+  background: #fff;
+}
+.search-date-filter.gray > .right .datepicker-filter-modal-btn {
+  background: var(--neutrals-100, #f4f4f4);
+}
+
+/* DROPDOWN */
+.search-date-filter.category > .left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.search-date-filter.category > .left .search-form {
+  margin-right: 6px;
+}
+/* DROPDOWN END*/
+.search-date-filter.category > .right .category-dropdown {
+  display: none;
+}
+
+@media screen and (max-width: 1435px) {
+  .search-date-filter.category > .left {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-right: 20px;
+  }
+  .search-date-filter.category > .left .search-form .input-box input {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 1320px) {
+  .search-date-filter.category {
+    flex-direction: column;
+  }
+  .search-date-filter.category > .left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+  .search-date-filter.category > .left .search-form {
+    margin-right: 7px;
+  }
+  .search-date-filter > .left .category-dropdown {
+    margin-left: 7px;
+    width: auto;
+  }
+  .search-date-filter > .left .category-dropdown .dropdown-head {
+    width: 100%;
+  }
+  .search-date-filter.category > .left .search-form .input-box input {
+    width: 100% !important;
+  }
+  .search-date-filter.category > .right {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+  }
+  .search-date-filter.category > .right .date-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-bottom: 12px;
+  }.search-date-filter.category > .right .date-container .from, 
+  .search-date-filter.category > .right .date-container .to {
+    width: auto;
+  }
+  .search-date-filter.category > .right .date-container .to {
+    margin-left: 7px;
+  }
+  .search-date-filter.category > .right .date-container .from {
+    margin-right: 7px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .search-date-filter.none-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+  }
+  .search-date-filter.none-category > .left .search-form .input-box input {
+    width: 100%;
+  }
+  .search-date-filter.none-category > .left {
+    margin-right: 6px;
+  }
+  .search-date-filter.none-category > .right {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 6px;
+  }
+  .search-date-filter.none-category > .right .date-container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .search-date-filter.none-category > .right .date-container .to {
+    margin-left: 0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  .search-date-filter.none-category > .right .date-container .from,
+  .search-date-filter.none-category > .right .date-container .to {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .search-date-filter.category > .left {
+    grid-template-columns: auto;
+  }
+  .search-date-filter.category > .left .category-dropdown {
+    display: none;
+  }
+  .search-date-filter.category > .left .search-form {
+    width: 100%;
+    margin-right: 0;
+  }
+  .search-date-filter.category > .right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 0;
+  }
+  .search-date-filter.category > .right .category-dropdown {
+    margin-right: 4px;
+    width: auto;
+    display: inline-block;
+  }
+  .search-date-filter.category > .right .datepicker-filter-modal-btn {
+    margin-left: 4px;
+  }
+
+  .search-date-filter > .left {
+    margin-right: 4px;
+  }
+  .search-date-filter > .right {
+    margin-left: 4px;
+  }
+  .search-date-filter > .right .date-container,
+  .search-date-filter > .right .buttons-con {
+    display: none !important;
+  }
+  .search-date-filter > .left .search-form .input-box input {
+    font-size: 14px;
+  }
+  .search-date-filter > .right .datepicker-filter-modal-btn {
+    display: flex;
+  }
+}

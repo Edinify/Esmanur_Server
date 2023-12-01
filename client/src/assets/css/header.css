@@ -1,0 +1,267 @@
+.main-header {
+  background: var(--neutrals-200);
+}
+.main-header .header-content {
+  display: flex;
+}
+
+.main-header .header-content .header-content-container {
+  margin: 16px 0;
+  background-color: white;
+  width: 100%;
+  padding: 7px 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-header .header-content .header-content-container .header-context {
+  display: flex;
+  align-items: center;
+}
+.main-header .header-content .header-content-container .header-context svg {
+  cursor: pointer;
+  display: none;
+}
+
+.main-header .header-content .header-content-container .header-context h2 {
+  color: var(--neutrals-900);
+  font-size: 20px;
+  font-weight: 700;
+  /* margin-left: 8px; */
+}
+.main-header .header-content .header-content-container .header-icons svg {
+  cursor: pointer;
+}
+
+.main-header .header-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-nav-icons {
+  display: flex;
+  align-items: center;
+}
+.main-nav-icons .branch-name {
+  color: var(--neutrals-900);
+  font-size: 14px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 700px;
+  white-space: nowrap;
+}
+.main-nav-icons .branch-name span {
+  text-transform: capitalize;
+}
+.main-nav-icons .notification-con .notification-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.main-nav-icons .profile-img-con {
+  position: relative;
+  /* padding: 8px; */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-nav-icons .profile-img-con .profile-img .user-img-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+.main-nav-icons .user-modal-con {
+  position: absolute;
+  right: 0;
+  /* top: 37px; */
+  top: 45px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: 0.3s;
+  z-index: 100;
+}
+.main-nav-icons .user-modal-con.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.main-nav-icons .user-modal-con .user-modal {
+  width: 200px;
+  background-color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+/* .user-modal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  z-index: -1;
+} */
+
+.main-nav-icons .profile-img-con .user-func {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.main-nav-icons .profile-img-con .user-func p {
+  margin-left: 8px;
+  color: var(--neutrals-900);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.main-nav-icons .profile-img-con .user-func .profile-change-img {
+  display: flex;
+  align-items: center;
+}
+.main-nav-icons .profile-img-con .user-func .password-change-func {
+  display: flex;
+  align-items: center;
+  /* margin-top: 16px; */
+}
+
+
+
+
+.main-nav-icons .profile-img-con .user-func .logout-func {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.main-nav-icons .profile-img-con .user-func .logout-func p {
+  color: var(--error-500);
+}
+
+.main-nav-icons .profile-img-con .user-func.admin{
+  padding: 8px;
+}
+.main-nav-icons .profile-img-con .user-func.admin .logout-func{
+  margin: 0;
+}
+
+.main-nav-icons .notification-con {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.main-nav-icons .notification-con .help-icon {
+  margin-right: 10px;
+  display: flex;
+}
+
+.notification-con .notification-icon .change-notif-icon {
+  border-radius: 20px;
+  padding: 8px;
+  background-color: rgba(70, 42, 255, 0.1);
+  /* margin-right: 16px; */
+  display: flex;
+}
+.main-nav-icons .student-amount .student-lesson-icon{
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+
+}
+.main-nav-icons .student-amount .change-student-lesson-icon{
+  border-radius: 20px;
+  padding: 8px;
+  background-color: rgba(70, 42, 255, 0.1);
+  display: flex;
+}
+.profile-img-con .profile-img .change-user-icon {
+  border-radius: 25px;
+  padding: 8px;
+  background-color: rgba(70, 42, 255, 0.1);
+  display: flex;
+}
+.notification-con .notification-icon .notification-icon-head,
+.profile-img-con .profile-img .user-icon-head {
+  /* padding: 8px; */
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .notification-circle {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top: -2px;
+  right: 0px;
+} */
+
+.main-nav-icons .student-amount {
+  /* margin-right: 10px; */
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--neutrals-900);
+  display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .main-nav-icons .profile-img-con .user-func p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .main-nav-icons .branch-name {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .main-nav-icons .branch-name {
+    max-width: 400px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .main-nav-icons .branch-name {
+    max-width: 350px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main-nav-icons .branch-name {
+    max-width: 100px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .main-header .header-content .header-content-container .header-context svg {
+    display: block;
+    margin-right: 8px;
+  }
+
+
+  .main-header .header-content .header-content-container .header-context h2 {
+    font-size: 18px;
+  }
+}

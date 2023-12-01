@@ -1,0 +1,66 @@
+.salary-table tr td:first-child,
+.salary-table tr th:first-child {
+  width: 30%;
+}
+.salary-table tr th:nth-last-child(2),
+.salary-table tr td:nth-last-child(2),
+.salary-table tr th:nth-last-child(3),
+.salary-table tr td:nth-last-child(3),
+.salary-table tr th:last-child,
+.salary-table tr td:last-child {
+  text-align: center;
+}
+
+.salary-table tr th:nth-child(2),
+.salary-table tr td:nth-child(2),
+.salary-table tr th:nth-child(3),
+.salary-table tr td:nth-child(3),
+.salary-table tr th:nth-child(4),
+.salary-table tr td:nth-child(4)
+{
+  width: 150px;
+}
+.salary-table tr th:nth-child(6),
+.salary-table tr td:nth-child(6){
+  width: 100px;
+}
+
+.salary-table tr th:nth-child(5),
+.salary-table tr td:nth-child(5){
+  width: 10%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.salary-table tr th:nth-child(7),
+.salary-table tr td:nth-child(7){
+  text-decoration: none;
+  width: 100px;
+  cursor: pointer;
+}
+
+.salary-table tr td svg:nth-last-child(1){
+  margin-left: 5px;
+}
+
+.salary-table td:nth-last-child(1){
+  cursor: pointer;
+}
+
+.salary-bonus-modal-tablet{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+  height: 100%;
+  border: 1px solid;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  top: 0;
+  right: 0;
+}
+.salary-bonus-modal-tablet .salary-plus-icon{
+  display: none;
+}
+

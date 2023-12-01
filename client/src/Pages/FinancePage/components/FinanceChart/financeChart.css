@@ -1,0 +1,48 @@
+.finance-page .finance-chart .apexcharts-legend {
+  inset: unset !important;
+  left: 0 !important;
+  bottom: 0 !important;
+}
+.finance-page .finance-chart .chart-legends {
+  display: flex;
+  margin-top: 24px;
+}
+.finance-page .finance-chart .chart-legends .legend {
+  color: var(--neutrals-900);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 4px 24px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.finance-page .finance-chart .chart-legends .legend:last-child {
+  margin-right: 0;
+}
+.finance-page .finance-chart .chart-legends .legend.blue {
+  border: 1px solid var(--secondary-600);
+  background: rgba(5, 165, 234, 0.1);
+}
+.finance-page .finance-chart .chart-legends .legend.red {
+  border: 1px solid var(--error-600);
+  background: rgba(240, 59, 42, 0.1);
+}
+.finance-page .finance-chart .chart-legends .legend.yellow {
+  border: 1px solid var(--tertiary-700);
+  background: rgba(251, 160, 19, 0.1);
+}
+.finance-page .finance-chart .chart-legends .legend.green {
+  border: 1px solid #00bc85;
+  background: rgba(0, 188, 133, 0.1);
+}
+
+@media screen and (max-width: 640px) {
+  .finance-page .finance-chart .chart-legends {
+    margin-top: 16px;
+  }
+  .finance-page .finance-chart .chart-legends .legend {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+}

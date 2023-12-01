@@ -1,0 +1,89 @@
+.datepicker-filter-modal {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.datepicker-filter-modal-con {
+  width: 265px;
+  height: 100%;
+  padding: 20px 12px 16px 12px;
+  background-color: white;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.datepicker-filter-modal-con .head {
+  margin-bottom: 24px;
+}
+.datepicker-filter-modal-con .head .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.datepicker-filter-modal-con .head .top h2 {
+  color: var(--neutrals-900);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.datepicker-filter-modal-con .head .top .date-filter-close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(30, 30, 30, 0.06);
+  cursor: pointer;
+}
+.datepicker-filter-modal-con .head .bottom .date-container {
+  flex-direction: column;
+}
+.datepicker-filter-modal-con .head .bottom .date-container .date-picker-a {
+    height: 40px;
+}
+.datepicker-filter-modal-con .head .bottom .date-container .from,
+.datepicker-filter-modal-con .head .bottom .date-container .to {
+  width: 100%;
+}
+.datepicker-filter-modal-con .head .bottom .date-container .to {
+  margin-left: 0;
+  margin-top: 12px;
+}
+.datepicker-filter-modal-con .buttons-con {
+  display: flex;
+  flex-direction: column;
+}
+.datepicker-filter-modal-con .buttons-con button {
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+.datepicker-filter-modal-con .buttons-con button.apply-btn {
+  border-radius: 8px;
+  background: var(--primary-500, #462aff);
+  color: var(--neutrals-100);
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+.datepicker-filter-modal-con .buttons-con button.apply-btn:hover {
+  background-color: var(--primary-700);
+}
+.datepicker-filter-modal-con .buttons-con button.clear-btn {
+  color: var(--neutrals-500);
+  background-color: transparent;
+}

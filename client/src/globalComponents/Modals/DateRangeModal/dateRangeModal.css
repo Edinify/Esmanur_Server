@@ -1,0 +1,66 @@
+.date-range-modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.date-range-modal-con {
+  padding: 60px;
+  border-radius: 8px;
+  background-color: white;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px;
+  display: flex;
+  align-items: flex-end;
+}
+.date-range-modal-con .date-box .date-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #959595;
+  margin-bottom: 6px;
+}
+.date-range-modal .apply-btn {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background: var(--primary-500);
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 800px) {
+  .date-range-modal {
+    padding-top: 60px;
+    align-items: flex-start;
+  }
+  :where(.css-dev-only-do-not-override-1jr9qlj).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .date-range-modal-con {
+    padding: 0;
+    background-color: transparent !important;
+    position: static;
+  }
+  .date-range-modal .close-icon svg path {
+    stroke: #fff;
+    stroke-width: 3px;
+  } 
+  .date-range-modal-con .date-box .date-title {
+    color: #fff;
+  }
+}

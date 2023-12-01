@@ -1,0 +1,70 @@
+.login > .left {
+  width: 60%;
+  height: 100%;
+}
+.login .dashboard-preview {
+  border-radius: 16px;
+  background: var(--primary-300, #8f70ff);
+  padding: 36px 0 0 36px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login .dashboard-preview .title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.login .dashboard-preview .preview-imgs-con {
+    display: flex;
+    justify-content: flex-end;
+    /* padding-bottom: 47px; */
+    padding-left: 88px;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+.login .dashboard-preview .preview-imgs {
+  /* background-image: url("../../../../assets/images/login-imgs/Dashboard.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 584px;
+  height: 448px; */
+  position: relative;
+  /* width: 100%;
+  height: 100%; */
+  overflow: hidden;
+}
+.login .dashboard-preview .preview-imgs img {
+  /* background-image: url("../../../../assets/images/login-imgs/Chart.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  border-radius: 8px;
+  box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* position: absolute; */
+}
+/* .login .dashboard-preview .preview-imgs .preview-img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+  border-radius: 8px;
+} */
+.login .dashboard-preview .preview-imgs .area-chart-img {
+  width: 238px;
+  height: 119px;
+  left: 147px;
+  top: -60px;
+}
+.login .dashboard-preview .preview-imgs .where-heard-img {
+  width: 144px;
+  height: 165px;
+  bottom: 0;
+  left: 58px;
+}

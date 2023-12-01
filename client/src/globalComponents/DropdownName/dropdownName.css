@@ -1,0 +1,32 @@
+.dropdown-name.data-status .dropdown-head {
+  background-color: #fff;
+}
+.dropdown-name .dropdown-body ul li svg {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+}
+.dropdown-name .dropdown-body ul li {
+  padding-left: 34px;
+}
+.dropdown-name .err-message {
+  top: 49px;
+  font-size: 11px;
+  color: red;
+  position: absolute;
+}
+.details-header-content .details-header-content-left .dropdown-name {
+  margin-left: 12px;
+  width: 236px;
+}
+@media screen and (max-width: 1320px) {
+  .main-card-layout .dropdown-name .err-message {
+    top: 39px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-card-layout .dropdown-name .err-message {
+    display: none;
+  }
+}

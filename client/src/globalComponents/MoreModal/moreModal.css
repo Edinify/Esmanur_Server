@@ -1,0 +1,164 @@
+.more-modal {
+  border-radius: 8px 0 0 0;
+  /* padding: 12px 0 16px 12px; */
+  z-index: 100;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  /* top: 70px;
+  height: 100%; */
+}
+.more-modal .more-modal-con {
+  width: 370px;
+  background-color: white;
+  box-shadow: -4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  padding: 12px 16px 16px 12px;
+  height: 100%;
+}
+.more-modal .more-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.more-modal-header h2 {
+  color: var(--neutrals-900);
+  font-size: 18px;
+  font-weight: 700;
+}
+.more-modal .more-modal-header .more-modal-header-icons {
+  display: flex;
+}
+.more-modal .more-modal-header .more-modal-header-icons .header-icon-edit {
+  padding: 7px;
+  border-radius: 19px;
+  background: var(--primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+}
+.more-modal .more-modal-header .more-modal-header-icons .header-icon-delete{
+  cursor: pointer;
+} 
+.more-modal .more-modal-header .more-modal-header-icons .header-icon-close {
+  background-color: rgba(30, 30, 30, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-left: 12px;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+}
+.more-modal .more-modal-header-inform {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.more-modal .more-modal-header-inform h3 {
+  color: var(--neutrals-600);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.more-modal .more-modal-header-inform h2{
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--neutrals-900);
+}
+.more-modal .more-modal-work-inform {
+  margin-top: 36px;
+}
+.more-modal .more-modal-work-inform .work-inform-con {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.more-modal .more-modal-work-inform h3 {
+  color: var(--neutrals-600);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.more-modal .more-modal-header-inform span {
+  color: var(--neutrals-900);
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.more-modal .more-modal-con .salary-more-modal-buttons{
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+.more-modal .more-modal-con .salary-more-modal-buttons button{
+  padding: 9px 24px;
+  border-radius: 8px;
+  width: 170px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.more-modal .more-modal-con .salary-more-modal-buttons .edit-bonus-btn{
+  color: var(--neutrals-900);
+  background-color: var(--neutrals-200);
+}
+.more-modal .more-modal-con .salary-more-modal-buttons .add-bonus-btn{
+  color: white;
+  background-color: #00BC85;
+}
+
+
+.more-modal .more-modal-work-inform span {
+  color: var(--neutrals-900);
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.more-modal .more-status.active {
+  color: #00bc85;
+}
+
+@media screen and (max-width: 1280px) {
+  .more-modal {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    top: 0;
+  }
+  .more-modal .more-modal-header {
+    flex-direction: column-reverse;
+  }
+  .more-modal-header h2 {
+    width: 100%;
+  }
+  .more-modal-header-icons {
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .more-modal .more-modal-con {
+    float: right;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .more-modal .more-modal-con {
+    height: 100vh;
+    width: 300px;
+  }
+  .more-modal .more-modal-con .salary-more-modal-buttons{
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+  .more-modal .more-modal-con .salary-more-modal-buttons .add-bonus-btn{
+    width: 100%;
+  }
+  .more-modal .more-modal-con .salary-more-modal-buttons .edit-bonus-btn{
+    width: 100%;
+    margin-top: 8px;
+  }
+}

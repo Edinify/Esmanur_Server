@@ -1,0 +1,464 @@
+.main-table-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.main-table-modal .main-table-modal-con {
+  position: fixed;
+  background-color: white;
+  width: 512px;
+  max-height: 90%;
+  /* overflow-x: hidden; */
+  /* overflow-y: auto; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  padding: 36px 16px 16px 16px;
+  overflow: auto;
+}
+.main-table-modal .main-table-modal-con .close-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.table-modal-content {
+  width: 100%;
+  /* height: 100%; */
+  /* padding: 36px 56px 0 36px; */
+}
+.table-modal-content .modal-header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+}
+/* CONTENT CON */
+.table-modal-content .content-con {
+  display: flex;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.table-modal-content .content-con .content-type,
+.table-modal-content .content-con .content-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+.table-modal-content .content-con .content-type {
+  margin-right: 8px;
+  white-space: nowrap;
+  color: var(--neutrals-600);
+}
+
+.table-modal-content .content-con .content-text {
+  color: var(--neutrals-900);
+}
+.table-modal-content .content-con.teacher-name .content-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+}
+.table-modal-content .content-con.student-status .content-text {
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.table-modal-content .content-con.student-status .content-text.green {
+  background-color: #d4ffbf;
+}
+.table-modal-content .content-con.student-status .content-text.red {
+  background-color: #ffced1;
+}
+.table-modal-content .content-con.student-status .content-text.orange {
+  background-color: #feecb4;
+}
+.table-modal-content .content-con.student-status .content-text.pink {
+  background-color: #ffbad0;
+}
+.table-modal-content .content-con.student-status .content-text.purple {
+  background-color: #d2c3fe;
+}
+.table-modal-content .content-con.modal-note {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.table-modal-content .content-con.modal-tasks {
+  flex-direction: column;
+}
+.table-modal-content .student-rate {
+  margin-top: 32px;
+}
+.table-modal-content .student-rate .content-con:first-child {
+  flex-direction: column;
+  margin-bottom: 36px;
+}
+.table-modal-content .student-rate .content-con:first-child .content-text {
+  min-height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid var(--neutrals-600, #717171);
+  padding: 12px;
+  margin-top: 4px;
+}
+.table-modal-content .student-rate .content-text.stars {
+  display: flex;
+  align-items: center;
+}
+.table-modal-content .student-rate .content-text.stars svg {
+  margin-left: 4px;
+}
+.table-modal-content .content-con.modal-note .content-type,
+.table-modal-content .content-con.modal-tasks .content-type {
+  margin-right: 0;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.table-modal-content .content-con.modal-tasks textarea,
+.table-modal-content .content-con.modal-note textarea {
+  border: 1px solid var(--neutrals-800, #3f3f3f);
+  border-radius: 8px;
+  width: 100%;
+  height: 90px;
+  padding: 12px;
+  color: var(--neutrals-900, #1e1e1e);
+  font-size: 16px;
+  font-weight: 600;
+  resize: vertical;
+}
+.table-modal-content .content-con .content-text .star {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4));
+}
+.table-modal-content .content-con .content-text .star path {
+  fill: rgb(255, 230, 2);
+}
+.table-modal-content .content-con.modal-students {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: unset;
+  /*  */
+  /* align-items: center; */
+  /*  */
+  /* flex-direction: column; */
+}
+.table-modal-content .content-con.modal-students .content-type {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.table-modal-content .content-con.modal-students .students {
+  display: flex;
+  flex-wrap: wrap;
+  /*  */
+  /* margin-top: 4px; */
+  /*  */
+}
+.table-modal-content .content-con.modal-students .students.disabled {
+  pointer-events: none;
+}
+.table-modal-content .content-con.modal-students .student-dropdown {
+  position: relative;
+}
+.table-modal-content .student {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--neutrals-100);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 0 5px 5px 5px;
+  cursor: pointer;
+  /* height: 27px; */
+}
+.table-modal-content .students.disabled .dropdown-icon svg path,
+.table-modal-content .student.disabled .dropdown-icon svg path {
+  fill: var(--neutrals-500);
+}
+.table-modal-content .student .student-name {
+  /* font-size: 18px; */
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neutrals-900);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 8px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+}
+.table-modal-content .students.disabled .student-name,
+.table-modal-content .student.disabled .student-name {
+  color: var(--neutrals-500);
+}
+.table-modal-content .student.green {
+  background-color: #d4ffbf;
+}
+.table-modal-content .student.red {
+  background-color: var(--error-100);
+}
+.table-modal-content .student.orange {
+  background-color: #feecb4;
+}
+.table-modal-content .student.disabled {
+  pointer-events: none;
+}
+.table-modal-content .child-status {
+  border: 0.5px solid #dddddd;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  right: 5px;
+  z-index: 100;
+  cursor: pointer;
+  background-color: var(--neutrals-100);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: 0.3s;
+}
+
+.table-modal-content .child-status.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.table-modal-content .child-status p {
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--neutrals-300);
+  padding: 4px 6px;
+}
+.table-modal-content .child-status p:last-child {
+  border-bottom: none;
+}
+.table-modal-content .child-status p:nth-child(1) {
+  color: var(--error-600);
+}
+.table-modal-content .child-status p:nth-child(2) {
+  color: #00bb00;
+}
+.table-modal-content .child-status p:nth-child(3) {
+  color: #FBA013;
+}
+.modal-select ul {
+  display: flex;
+}
+.modal-select ul li {
+  list-style: none;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid var(--neutrals-300);
+  text-align: center;
+}
+.modal-select ul li.disabled {
+  color: var(--neutrals-500);
+  pointer-events: none;
+}
+.modal-select ul li.active {
+  color: white;
+  background-color: #2a78ff;
+  border-color: #2a78ff;
+}
+.modal-select ul .none {
+  color: #5d5d5d;
+  background-color: var(--neutrals-100);
+}
+.modal-select ul li:nth-child(1) {
+  border-radius: 8px 0 0 8px;
+}
+.modal-select ul li:nth-child(3) {
+  border-radius: 0 8px 8px 0;
+}
+
+.modal-select ul li:nth-child(1) {
+  border-radius: 8px 0 0 8px;
+}
+.modal-select ul li:nth-child(3) {
+  border-radius: 0 8px 8px 0;
+}
+
+.table-modal-content .rate-container input[type="radio"] {
+  display: none;
+}
+
+.table-modal-content .rate-comp .star {
+  cursor: pointer;
+  margin: 10px 0;
+}
+.table-modal-content .rate-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.table-modal-content .rate-container textarea {
+  border: 1px solid #3f3f3f;
+  border-radius: 8px;
+  padding: 12px 12px 22px 12px;
+  height: 120px;
+}
+.table-modal-content .modal-buttons {
+  /* margin: 48px 0 36px 0; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+.student-modal-save-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.teacher-modal-save-btn {
+  display: flex;
+  position: relative;
+}
+.teacher-modal-save-btn.mobile,
+.student-modal-save-btn.mobile {
+  display: none;
+}
+.teacher-modal-save-btn.active {
+  width: 100%;
+  justify-content: flex-end;
+}
+.teacher-modal-save-btn .student-attendance-error {
+  position: absolute;
+  color: red;
+  top: -24px;
+  right: 0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.teacher-modal-save-btn .save-btn,
+.student-modal-save-btn .save-btn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 24px;
+  background-color: var(--primary-500);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .main-table-modal {
+    background-color: transparent;
+    overflow: auto;
+  }
+
+  .main-table-modal .main-table-modal-con {
+    /* position: static; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    transform: translate(0);
+    border-radius: 0;
+    padding: 36px 16px 16px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .main-table-modal .main-table-modal-con .close-btn {
+    right: 16px;
+    top: 16px;
+  }
+
+  .table-modal-content {
+    padding: 0;
+  }
+  .table-modal-content .modal-header {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+  .table-modal-content .content-con {
+    display: flex;
+    margin-bottom: 12px;
+  }
+  .table-modal-content .content-con.modal-note,
+  .table-modal-content .content-con.modal-tasks {
+    flex-direction: column;
+  }
+  .table-modal-content .content-con.modal-note .content-type,
+  .table-modal-content .content-con.modal-tasks .content-type {
+    flex-direction: column;
+    margin-right: 0;
+  }
+  .table-modal-content .content-con textarea {
+    padding: 12px 12px 28px 12px;
+    margin-top: 8px;
+  }
+  .table-modal-content .student-rate .content-con .content-type {
+    font-size: 14px;
+  }
+  .modal-buttons {
+    flex-direction: column;
+    margin: 0;
+    margin-top: 38px;
+  }
+  .modal-buttons .modal-select {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+  .modal-select ul li {
+    width: 33%;
+    text-align: center;
+    padding: 8px 10px;
+  }
+  .teacher-modal-save-btn.desktop,
+  .student-modal-save-btn.desktop {
+    display: none;
+  }
+  .teacher-modal-save-btn.mobile,
+  .student-modal-save-btn.mobile {
+    display: flex;
+  }
+  .teacher-modal-save-btn .save-btn,
+  .student-modal-save-btn .save-btn {
+    border: 1px solid blue;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  .table-modal-content {
+    flex-direction: column;
+  }
+  .teacher-modal-save-btn .student-attendance-error {
+    top: -19px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .modal-buttons .modal-select ul {
+    flex-direction: column;
+  }
+  .modal-buttons .modal-select ul li {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,16 @@
+/* table scroll text */
+.teacher-table tr th:nth-child(4),
+.teacher-table tr td:nth-child(4) {
+  /* width: 100px; */
+}
+.teacher-table tr th:nth-child(5),
+.teacher-table tr td:nth-child(5) {
+  width: 100px;
+}
+.teacher-table tr th:nth-child(6),
+.teacher-table tr td:nth-child(6) {
+  width: 80px;
+}
+.teacher-table tr td:nth-child(3) {
+  text-transform: lowercase;
+}
