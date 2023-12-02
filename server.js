@@ -24,8 +24,11 @@ import feedbackRoutes from "./routes/feedbackRoutes.js";
 import branchRoutes from "./routes/branchRoutes.js";
 import foodRoutes from "./routes/foodRoutes.js";
 import uniformRoutes from "./routes/uniformRoutes.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT;
