@@ -33,9 +33,7 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT;
 const uri = process.env.DB_URI
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+
 
 app.use(
   cors({
@@ -46,6 +44,12 @@ app.use(
     exposedHeaders: ["Content-Type"],
   })
 );
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "15mb" }));
 app.use("/api/user/auth", authRoutes);
