@@ -33,7 +33,9 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT;
 const uri = process.env.DB_URI
-app.use(express.static(path.join(__dirname, '/client/build')))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.use(
   cors({
