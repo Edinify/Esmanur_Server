@@ -37,8 +37,7 @@ const uri = process.env.DB_URI
 
 app.use(
   cors({
-    origin: process.env.URL_PORT,
-    credentials: true,
+    origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "Accept"],
     exposedHeaders: ["Content-Type"],
@@ -47,7 +46,7 @@ app.use(
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
